@@ -1,4 +1,4 @@
-package org.cloudfun.design.pattern;
+package org.cloudfun.design.pattern.create;
 
 /**
  * Copyright @ 2019/5/31
