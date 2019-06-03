@@ -78,14 +78,4 @@ public class PrototypePattern {
 
 
     }
-
-
-
-
-
-
-
-
-
-
 }
