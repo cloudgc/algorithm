@@ -10,15 +10,15 @@ package org.cloudfun.design.pattern.create;
 public class SinglePattern {
 
 
-    private  static final SinglePattern obj = SinglePatternHolde.SINGLE_PATTERN;
+    private static final SinglePattern obj = SinglePatternHolde.SINGLE_PATTERN;
 
 
-    public static  SinglePattern getInstance(){
-        return  obj;
+    private static SinglePattern getInstance() {
+        return obj;
     }
 
     private static class SinglePatternHolde {
-        static final SinglePattern SINGLE_PATTERN=new SinglePattern();
+        static final SinglePattern SINGLE_PATTERN = new SinglePattern();
     }
 
     public static void main(String[] args) {
@@ -26,8 +26,6 @@ public class SinglePattern {
         SinglePattern instance = SinglePattern.getInstance();
 
         System.out.println(instance);
-
-
 
     }
 
