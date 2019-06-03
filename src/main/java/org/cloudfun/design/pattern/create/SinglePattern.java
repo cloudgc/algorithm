@@ -27,6 +27,7 @@ public class SinglePattern {
 
         System.out.println(instance);
 
+        System.out.println(instance);
     }
 
 }
