@@ -10,7 +10,7 @@ package org.cloudfun.algorithm.arrays;
  */
 public class CircleLinkList {
 
-    public static  ListNode generateCircleLinkList(int length, int pos) {
+    public static ListNode generateCircleLinkList(int length, int pos) {
 
         if (pos >= length) {
             throw new IllegalStateException("post < length");
@@ -22,30 +22,54 @@ public class CircleLinkList {
         ListNode tmp = root;
         ListNode posNode = null;
 
-        do{
+        do {
             v++;
             tmp.next = new ListNode(v);
             if (pos == v) {
-                posNode=tmp.next;
+                posNode = tmp.next;
             }
-            if(length==v){
-                tmp.next.next=posNode;
+            if (length == v) {
+                tmp.next.next = posNode;
                 break;
             }
             tmp = tmp.next;
 
-        }while (true);
+        } while (true);
 
         return root;
 
     }
 
+    public static boolean hasCircle(ListNode node) {
+
+        ListNode fast = node;
+        ListNode low = node;
+
+        while (true) {
+            low = low.next;
+            fast = fast.next.next;
+            if (fast == null || low == null) {
+                return false;
+            }
+
+            if (low.equals(fast)) {
+                System.out.println(low+";"+fast);
+                return true;
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
 
         ListNode listNode = CircleLinkList.generateCircleLinkList(10, 6);
 
-        LinkList.printLinkNode(listNode);
+        if (!CircleLinkList.hasCircle(listNode)) {
+            LinkList.printLinkNode(listNode);
+        }else{
 
+        System.out.println("has circle");
+        }
 
 
     }
