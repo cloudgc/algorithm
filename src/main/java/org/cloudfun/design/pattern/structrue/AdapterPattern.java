@@ -1,4 +1,4 @@
-package org.cloudfun.design.pattern.stuctrue;
+package org.cloudfun.design.pattern.structrue;
 
 /**
  * Copyright @ 2019/6/4
