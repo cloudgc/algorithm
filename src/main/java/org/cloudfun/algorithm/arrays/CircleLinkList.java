@@ -60,6 +60,51 @@ public class CircleLinkList {
     }
 
 
+    public static int circlePoint(ListNode circleNode){
+
+        ListNode slowTmp=circleNode;
+        ListNode fastTmp=circleNode;
+
+        ListNode finalNode=null;
+
+        int index=0;
+
+        long maxIndex=0;
+
+        while(true){
+
+            maxIndex++;
+
+            slowTmp=slowTmp.next;
+            // ignore next null
+            fastTmp=fastTmp.next.next;
+
+            if(slowTmp.equals(fastTmp)) {
+                fastTmp=circleNode;
+                while(true){
+                    fastTmp=fastTmp.next;
+                    slowTmp=slowTmp.next;
+                    index++;
+                    if(slowTmp.equals(fastTmp)){
+                        finalNode=slowTmp;
+                        System.out.println("meet node :"+finalNode.val);
+                        break;
+                    }
+                }
+
+                break;
+
+            }
+
+            if(maxIndex>Integer.MAX_VALUE){
+                break;
+            }
+
+        }
+        return index;
+    }
+
+
     public static void main(String[] args) {
 
         ListNode listNode = CircleLinkList.generateCircleLinkList(10, 6);
@@ -70,6 +115,11 @@ public class CircleLinkList {
 
         System.out.println("has circle");
         }
+
+        CircleLinkList.circlePoint(listNode);
+
+
+
 
 
     }
