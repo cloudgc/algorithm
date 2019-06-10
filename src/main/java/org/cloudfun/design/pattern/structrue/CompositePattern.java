@@ -13,56 +13,98 @@ import java.util.List;
  */
 public class CompositePattern {
 
-    static class LegoCarModal {
-        public LegoCarModal(String number) {
-            this.number = number;
+    static abstract class LegoCarModal {
+        private String name;
+
+
+
+        public LegoCarModal(String name){
+            this.name=name;
         }
+        public String getSlotName(){
+            return this.name;
+      }
 
-        String number;
-
-        List<LegoCarModal> slot;
+      public abstract String showInfo();
     }
 
-    static abstract class AbstractCarModal {
 
-        public AbstractCarModal(LegoCarModal modal){
+    static class LeafLegoCarModal extends LegoCarModal{
 
-        }
-        abstract void slot(LegoCarModal modal);
-    }
-
-    static class CarModal extends  AbstractCarModal{
-
-        private LegoCarModal carModal;
-
-        public CarModal(LegoCarModal modal) {
-            super(modal);
-            this.carModal=modal;
-            if(carModal.slot==null){
-                carModal.slot=new ArrayList<>();
-            }
+        public LeafLegoCarModal(String name) {
+            super(name);
         }
 
         @Override
-        void slot(LegoCarModal modal) {
-            carModal.slot.add(modal);
+        public String showInfo() {
+            return "/"+this.getSlotName()+"\n";
         }
+
     }
 
+    static class SlotLegoCarModal extends LegoCarModal{
+
+        List<LegoCarModal> subSlotLego =new ArrayList<>();
+
+        public SlotLegoCarModal(String name) {
+            super(name);
+        }
+
+        @Override
+        public String showInfo() {
+            StringBuilder a = new StringBuilder("/");
+            a.append(this.getSlotName());
+
+            for(LegoCarModal carModal:subSlotLego){
+                a.append(carModal.getSlotName()+"/");
+            }
+            return a.toString();
+        }
+
+        public void add(LegoCarModal legoCarModal){
+            this.subSlotLego.add(legoCarModal);
+        }
+        public List<LegoCarModal> getSubSlotLego(){
+            return this.subSlotLego;
+        }
+
+
+    }
 
     public static void main(String[] args) {
-
-        LegoCarModal coreModal=new LegoCarModal("core");
-
-        CarModal carModal=new CarModal(coreModal);
-
-//        carModal.slot();
+        SlotLegoCarModal carModal1=new SlotLegoCarModal("core");
 
 
+        // add body
+        SlotLegoCarModal carModal2=new SlotLegoCarModal("body");
+        carModal1.add(carModal2);
 
+        SlotLegoCarModal carModal3=new SlotLegoCarModal("arm");
+        LegoCarModal carModal31=new LeafLegoCarModal("finger1");
+        LegoCarModal carModal32=new LeafLegoCarModal("finger2");
+
+        carModal2.add(carModal3);
+
+        carModal3.add(carModal31);
+        carModal3.add(carModal32);
+
+        //add leg
+        SlotLegoCarModal carModal4=new SlotLegoCarModal("leg");
+
+        LegoCarModal carModal41=new LeafLegoCarModal("toe1");
+        LegoCarModal carModal42=new LeafLegoCarModal("toe2");
+
+        carModal2.add(carModal4);
+        carModal4.add(carModal41);
+        carModal4.add(carModal42);
+
+        String s = carModal1.showInfo();
+
+        System.out.println(s);
 
 
     }
+
 
 
 }
