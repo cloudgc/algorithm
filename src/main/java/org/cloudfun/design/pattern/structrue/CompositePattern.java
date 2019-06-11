@@ -52,13 +52,15 @@ public class CompositePattern {
 
         @Override
         public String showInfo() {
-            StringBuilder a = new StringBuilder("/");
-            a.append(this.getSlotName());
-
-            for(LegoCarModal carModal:subSlotLego){
-                a.append(carModal.getSlotName()+"/");
+            StringBuilder bf=new StringBuilder();
+            for(LegoCarModal carModal:subSlotLego) {
+                StringBuilder a = new StringBuilder("/"+this.getSlotName());
+                bf.append(a);
+                a.append(carModal.showInfo());
+                System.out.println(a.toString());
             }
-            return a.toString();
+
+            return bf.toString();
         }
 
         public void add(LegoCarModal legoCarModal){
