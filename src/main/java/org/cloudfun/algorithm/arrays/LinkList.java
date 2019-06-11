@@ -21,8 +21,6 @@ public class LinkList {
         for (int i = 1; i < nodeNum; i++) {
             t.next = new ListNode(i);
             t = t.next;
-
-
         }
         return listNode;
     }
