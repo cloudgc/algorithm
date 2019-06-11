@@ -8,9 +8,8 @@ import java.util.List;
  *
  * @author cloudgc
  * @since 0.0.1
- *
- *  当 需要多维度去过滤一组数据可以 使用过滤模式
- *
+ * <p>
+ * 当 需要多维度去过滤一组数据可以 使用过滤模式
  */
 public class FilterPattern {
 

@@ -53,41 +53,41 @@ public class CircleLinkList {
             }
 
             if (low.equals(fast)) {
-                System.out.println(low+";"+fast);
+                System.out.println(low + ";" + fast);
                 return true;
             }
         }
     }
 
 
-    public static int circlePoint(ListNode circleNode){
+    public static int circlePoint(ListNode circleNode) {
 
-        ListNode slowTmp=circleNode;
-        ListNode fastTmp=circleNode;
+        ListNode slowTmp = circleNode;
+        ListNode fastTmp = circleNode;
 
-        ListNode finalNode=null;
+        ListNode finalNode = null;
 
-        int index=0;
+        int index = 0;
 
-        long maxIndex=0;
+        long maxIndex = 0;
 
-        while(true){
+        while (true) {
 
             maxIndex++;
 
-            slowTmp=slowTmp.next;
+            slowTmp = slowTmp.next;
             // ignore next null
-            fastTmp=fastTmp.next.next;
+            fastTmp = fastTmp.next.next;
 
-            if(slowTmp.equals(fastTmp)) {
-                fastTmp=circleNode;
-                while(true){
-                    fastTmp=fastTmp.next;
-                    slowTmp=slowTmp.next;
+            if (slowTmp.equals(fastTmp)) {
+                fastTmp = circleNode;
+                while (true) {
+                    fastTmp = fastTmp.next;
+                    slowTmp = slowTmp.next;
                     index++;
-                    if(slowTmp.equals(fastTmp)){
-                        finalNode=slowTmp;
-                        System.out.println("meet node :"+finalNode.val);
+                    if (slowTmp.equals(fastTmp)) {
+                        finalNode = slowTmp;
+                        System.out.println("meet node :" + finalNode.val);
                         break;
                     }
                 }
@@ -96,7 +96,7 @@ public class CircleLinkList {
 
             }
 
-            if(maxIndex>Integer.MAX_VALUE){
+            if (maxIndex > Integer.MAX_VALUE) {
                 break;
             }
 
@@ -111,15 +111,12 @@ public class CircleLinkList {
 
         if (!CircleLinkList.hasCircle(listNode)) {
             LinkList.printLinkNode(listNode);
-        }else{
+        } else {
 
-        System.out.println("has circle");
+            System.out.println("has circle");
         }
 
         CircleLinkList.circlePoint(listNode);
-
-
-
 
 
     }

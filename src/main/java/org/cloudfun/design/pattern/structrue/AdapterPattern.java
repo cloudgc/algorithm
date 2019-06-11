@@ -9,21 +9,22 @@ package org.cloudfun.design.pattern.structrue;
  */
 public class AdapterPattern {
 
-    public interface CarMediPlayer{
-        public void play(String auditType,String filename);
+    public interface CarMediPlayer {
+        public void play(String auditType, String filename);
 
     }
 
-    interface AdvanceMediaPlayer{
+    interface AdvanceMediaPlayer {
         void playVlc(String filename);
+
         void playMp4(String filename);
     }
 
-    static class VlcPlayer implements AdvanceMediaPlayer{
+    static class VlcPlayer implements AdvanceMediaPlayer {
 
         @Override
         public void playVlc(String filename) {
-            System.out.println("playing vlc file: "+filename);
+            System.out.println("playing vlc file: " + filename);
         }
 
         @Override
@@ -31,7 +32,8 @@ public class AdapterPattern {
 
         }
     }
-    static class Mp4Player implements AdvanceMediaPlayer{
+
+    static class Mp4Player implements AdvanceMediaPlayer {
 
         @Override
         public void playVlc(String filename) {
@@ -40,47 +42,45 @@ public class AdapterPattern {
 
         @Override
         public void playMp4(String filename) {
-            System.out.println("playing mp4 file:"+filename);
+            System.out.println("playing mp4 file:" + filename);
         }
     }
 
-    static class MediaAdapter implements CarMediPlayer{
+    static class MediaAdapter implements CarMediPlayer {
 
-         AdvanceMediaPlayer advancedMusicPlayer;
+        AdvanceMediaPlayer advancedMusicPlayer;
 
-        public MediaAdapter(String audioType){
-            if(audioType.equalsIgnoreCase("vlc") ){
+        public MediaAdapter(String audioType) {
+            if (audioType.equalsIgnoreCase("vlc")) {
                 advancedMusicPlayer = new VlcPlayer();
-            } else if (audioType.equalsIgnoreCase("mp4")){
+            } else if (audioType.equalsIgnoreCase("mp4")) {
                 advancedMusicPlayer = new Mp4Player();
             }
         }
 
         @Override
         public void play(String audioType, String fileName) {
-            if(audioType.equalsIgnoreCase("vlc")){
+            if (audioType.equalsIgnoreCase("vlc")) {
                 advancedMusicPlayer.playVlc(fileName);
-            }else if(audioType.equalsIgnoreCase("mp4")){
+            } else if (audioType.equalsIgnoreCase("mp4")) {
                 advancedMusicPlayer.playMp4(fileName);
             }
         }
     }
 
-    static class AudioAdapter implements CarMediPlayer{
-
+    static class AudioAdapter implements CarMediPlayer {
 
 
         @Override
         public void play(String auditType, String filename) {
-            if(auditType.equals("mp3")){
-                System.out.println("play mp3 file:"+filename);
-            }else if(auditType.equals("mp4")||auditType.equals("vlc")){
-                MediaAdapter mediaAdapter=new MediaAdapter(auditType);
-                mediaAdapter.play(auditType,filename);
-            }else{
+            if (auditType.equals("mp3")) {
+                System.out.println("play mp3 file:" + filename);
+            } else if (auditType.equals("mp4") || auditType.equals("vlc")) {
+                MediaAdapter mediaAdapter = new MediaAdapter(auditType);
+                mediaAdapter.play(auditType, filename);
+            } else {
                 System.out.println("other file type");
             }
-
 
 
         }
@@ -89,12 +89,10 @@ public class AdapterPattern {
 
     public static void main(String[] args) {
         AudioAdapter audioAdapter = new AudioAdapter();
-        audioAdapter.play("mp3","love.mp3");
+        audioAdapter.play("mp3", "love.mp3");
 
 
     }
-
-
 
 
 }

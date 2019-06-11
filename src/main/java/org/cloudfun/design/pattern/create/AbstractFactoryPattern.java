@@ -5,13 +5,12 @@ package org.cloudfun.design.pattern.create;
  *
  * @author cloudgc
  * @since 0.0.1
- *
+ * <p>
  * 创建一系列相互关联的类的接口， 但是不用指定实体类
- *
  */
 public class AbstractFactoryPattern {
 
-    interface CarCreate{
+    interface CarCreate {
 
         void createWheel();
 
@@ -19,7 +18,7 @@ public class AbstractFactoryPattern {
 
     }
 
-    static class BMWCarCreate implements CarCreate{
+    static class BMWCarCreate implements CarCreate {
 
         @Override
         public void createWheel() {
@@ -34,7 +33,7 @@ public class AbstractFactoryPattern {
     }
 
 
-    static class AudiCarCreate implements CarCreate{
+    static class AudiCarCreate implements CarCreate {
 
         @Override
         public void createWheel() {
@@ -49,13 +48,13 @@ public class AbstractFactoryPattern {
     }
 
 
-    interface CarSell{
+    interface CarSell {
 
         String getSellName();
 
     }
 
-    static class BMWCarSell implements CarSell{
+    static class BMWCarSell implements CarSell {
 
         @Override
         public String getSellName() {
@@ -63,7 +62,7 @@ public class AbstractFactoryPattern {
         }
     }
 
-    static class AudiCarSell implements CarSell{
+    static class AudiCarSell implements CarSell {
 
         @Override
         public String getSellName() {
@@ -73,8 +72,7 @@ public class AbstractFactoryPattern {
     }
 
 
-
-    interface  CarFacotry{
+    interface CarFacotry {
 
         CarCreate getCarCreate(String name);
 
@@ -82,14 +80,14 @@ public class AbstractFactoryPattern {
     }
 
 
-    static class  CarFactoryImp implements CarFacotry{
+    static class CarFactoryImp implements CarFacotry {
 
         @Override
         public CarCreate getCarCreate(String name) {
 
-            if("BMW".equals(name)){
+            if ("BMW".equals(name)) {
                 return new BMWCarCreate();
-            }else  if("audi".equals(name)){
+            } else if ("audi".equals(name)) {
                 return new AudiCarCreate();
             }
 
@@ -99,9 +97,9 @@ public class AbstractFactoryPattern {
         @Override
         public CarSell getCarSeil(String name) {
 
-            if("BMW".equals(name)){
+            if ("BMW".equals(name)) {
                 return new BMWCarSell();
-            }else if ("audi".equals(name)){
+            } else if ("audi".equals(name)) {
                 return new AudiCarSell();
             }
             return null;
@@ -121,9 +119,6 @@ public class AbstractFactoryPattern {
         System.out.println(bmw1.getSellName());
 
     }
-
-
-
 
 
 }

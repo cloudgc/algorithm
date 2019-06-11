@@ -48,16 +48,16 @@ public class ReverseSingleLinkList {
         while (cur != null) {
 
             //pre连接下一次需要反转的节点
-            pre.next=cur.next;
+            pre.next = cur.next;
 
             //转节点Cur
-            cur.next=root.next;
+            cur.next = root.next;
 
             //纠正头结点root的指向
-            root.next=cur;
+            root.next = cur;
 
             //cur指向下一次要反转的节点
-            cur= pre.next;
+            cur = pre.next;
         }
 
 

@@ -2,7 +2,7 @@ package org.cloudfun.algorithm.arrays;
 
 import org.junit.Test;
 import org.springframework.util.Assert;
-//import org.junit.Test;/**/
+
 /**
  * Copyright @ 2019/3/31
  *
@@ -23,7 +23,7 @@ public class ArraysReverseString {
 
         char[] chars = str.toCharArray();
 
-        for (int i = 0,j=chars.length-1; i <= j; i++, j--) {
+        for (int i = 0, j = chars.length - 1; i <= j; i++, j--) {
 
             char tmp = chars[i];
 
@@ -43,9 +43,9 @@ public class ArraysReverseString {
     @Test
     public void reverseTest1() {
 
-        String res=reverseString("Helbo");
+        String res = reverseString("Helbo");
 
-        Assert.isTrue("obleH".equals(res),"not pass");
+        Assert.isTrue("obleH".equals(res), "not pass");
 
     }
 

@@ -17,19 +17,19 @@ public class CompositePattern {
         private String name;
 
 
-
-        public LegoCarModal(String name){
-            this.name=name;
+        public LegoCarModal(String name) {
+            this.name = name;
         }
-        public String getSlotName(){
-            return this.name;
-      }
 
-      public abstract String showInfo();
+        public String getSlotName() {
+            return this.name;
+        }
+
+        public abstract String showInfo();
     }
 
 
-    static class LeafLegoCarModal extends LegoCarModal{
+    static class LeafLegoCarModal extends LegoCarModal {
 
         public LeafLegoCarModal(String name) {
             super(name);
@@ -37,14 +37,14 @@ public class CompositePattern {
 
         @Override
         public String showInfo() {
-            return "/"+this.getSlotName()+"\n";
+            return "/" + this.getSlotName() + "\n";
         }
 
     }
 
-    static class SlotLegoCarModal extends LegoCarModal{
+    static class SlotLegoCarModal extends LegoCarModal {
 
-        List<LegoCarModal> subSlotLego =new ArrayList<>();
+        List<LegoCarModal> subSlotLego = new ArrayList<>();
 
         public SlotLegoCarModal(String name) {
             super(name);
@@ -52,21 +52,22 @@ public class CompositePattern {
 
         @Override
         public String showInfo() {
-            StringBuilder bf=new StringBuilder();
-            for(LegoCarModal carModal:subSlotLego) {
-                StringBuilder a = new StringBuilder("/"+this.getSlotName());
-                bf.append(a);
+            StringBuilder bf = new StringBuilder();
+            for (LegoCarModal carModal : subSlotLego) {
+                StringBuilder a = new StringBuilder("/" + this.getSlotName());
                 a.append(carModal.showInfo());
-                System.out.println(a.toString());
+                bf.append(a);
+//                System.out.println(a.toString());
             }
 
             return bf.toString();
         }
 
-        public void add(LegoCarModal legoCarModal){
+        public void add(LegoCarModal legoCarModal) {
             this.subSlotLego.add(legoCarModal);
         }
-        public List<LegoCarModal> getSubSlotLego(){
+
+        public List<LegoCarModal> getSubSlotLego() {
             return this.subSlotLego;
         }
 
@@ -74,16 +75,16 @@ public class CompositePattern {
     }
 
     public static void main(String[] args) {
-        SlotLegoCarModal carModal1=new SlotLegoCarModal("core");
+        SlotLegoCarModal carModal1 = new SlotLegoCarModal("core");
 
 
         // add body
-        SlotLegoCarModal carModal2=new SlotLegoCarModal("body");
+        SlotLegoCarModal carModal2 = new SlotLegoCarModal("body");
         carModal1.add(carModal2);
 
-        SlotLegoCarModal carModal3=new SlotLegoCarModal("arm");
-        LegoCarModal carModal31=new LeafLegoCarModal("finger1");
-        LegoCarModal carModal32=new LeafLegoCarModal("finger2");
+        SlotLegoCarModal carModal3 = new SlotLegoCarModal("arm");
+        LegoCarModal carModal31 = new LeafLegoCarModal("finger1");
+        LegoCarModal carModal32 = new LeafLegoCarModal("finger2");
 
         carModal2.add(carModal3);
 
@@ -91,10 +92,10 @@ public class CompositePattern {
         carModal3.add(carModal32);
 
         //add leg
-        SlotLegoCarModal carModal4=new SlotLegoCarModal("leg");
+        SlotLegoCarModal carModal4 = new SlotLegoCarModal("leg");
 
-        LegoCarModal carModal41=new LeafLegoCarModal("toe1");
-        LegoCarModal carModal42=new LeafLegoCarModal("toe2");
+        LegoCarModal carModal41 = new LeafLegoCarModal("toe1");
+        LegoCarModal carModal42 = new LeafLegoCarModal("toe2");
 
         carModal2.add(carModal4);
         carModal4.add(carModal41);
@@ -106,7 +107,6 @@ public class CompositePattern {
 
 
     }
-
 
 
 }

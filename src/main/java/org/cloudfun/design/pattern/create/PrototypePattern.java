@@ -12,11 +12,11 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class PrototypePattern {
 
-    static abstract class Car implements Cloneable{
+    static abstract class Car implements Cloneable {
 
-       String logo;
+        String logo;
 
-        public void setLogo(){
+        public void setLogo() {
         }
 
         abstract void driver();
@@ -27,11 +27,11 @@ public class PrototypePattern {
         }
     }
 
-    static class AudiCar extends Car{
+    static class AudiCar extends Car {
 
         @Override
         public void setLogo() {
-            this.logo="Auto";
+            this.logo = "Auto";
         }
 
 
@@ -41,11 +41,11 @@ public class PrototypePattern {
         }
     }
 
-    static class BMWCar extends Car{
+    static class BMWCar extends Car {
 
         @Override
         public void setLogo() {
-            this.logo="BMW";
+            this.logo = "BMW";
         }
 
         @Override
@@ -54,15 +54,16 @@ public class PrototypePattern {
         }
     }
 
-    static class CarCache{
+    static class CarCache {
 
-        private static Map<String,Car> carcache =new ConcurrentHashMap<>();
+        private static Map<String, Car> carcache = new ConcurrentHashMap<>();
+
         static {
-            carcache.put("audi",new AudiCar());
-            carcache.put("bmw",new BMWCar());
+            carcache.put("audi", new AudiCar());
+            carcache.put("bmw", new BMWCar());
         }
 
-        public  static Car getCar(String name) throws CloneNotSupportedException {
+        public static Car getCar(String name) throws CloneNotSupportedException {
             return (Car) carcache.get(name).clone();
         }
 
