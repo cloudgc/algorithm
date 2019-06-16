@@ -1,5 +1,7 @@
 package org.cloudfun.algorithm.sort;
 
+import java.util.Arrays;
+
 /**
  * Copyright @ 2019/6/12
  *
@@ -7,4 +9,43 @@ package org.cloudfun.algorithm.sort;
  * @since 0.0.1
  */
 public class InsertSort {
+
+    static class NormalInsertSort {
+
+        static int[] sort(int[] data) {
+
+            if (data == null || data.length <= 0) {
+                return data;
+            }
+
+            for (int i = 1; i < data.length ; i++) {
+                int e = data[i];
+                int j = i - 1;
+                for (; j >= 0; --j) {
+                    if (e < data[j]) {
+                        data[j + 1] = data[j];
+                    } else {
+                        break;
+                    }
+
+                }
+                data[j + 1] = e;
+
+            }
+
+            return data;
+        }
+
+        public static void main(String[] args) {
+
+            int[] data = new int[]{4, 5, 6, 1, 2, 7};
+            int[] sort = NormalInsertSort.sort(data);
+//            int[] bubble = BubbleSort.bubble(data);
+//            System.out.println(Arrays.toString(bubble));
+            System.out.println(Arrays.toString(sort));
+        }
+
+    }
+
+
 }
