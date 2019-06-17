@@ -18,7 +18,7 @@ public class InsertSort {
                 return data;
             }
 
-            for (int i = 1; i < data.length ; i++) {
+            for (int i = 1; i < data.length; i++) {
                 int e = data[i];
                 int j = i - 1;
                 for (; j >= 0; --j) {
@@ -29,6 +29,7 @@ public class InsertSort {
                     }
 
                 }
+                System.out.println("j:"+j);
                 data[j + 1] = e;
 
             }
@@ -38,7 +39,7 @@ public class InsertSort {
 
         public static void main(String[] args) {
 
-            int[] data = new int[]{4, 5, 6, 1, 2, 7};
+            int[] data = new int[]{1,3,4,2};
             int[] sort = NormalInsertSort.sort(data);
 //            int[] bubble = BubbleSort.bubble(data);
 //            System.out.println(Arrays.toString(bubble));
@@ -47,5 +48,30 @@ public class InsertSort {
 
     }
 
+    public int[] insertSort(int[] data) {
+
+        for (int i = 1; i < data.length; i++) {
+
+            int compareEle = data[i];
+
+            int j = i - 1;
+
+
+            for (; j >= 0; j--) {
+
+                if (compareEle < data[j]) {
+                    data[j+1]=data[j];
+                }else {
+                    break;
+                }
+            }
+
+            data[j]=compareEle;
+
+        }
+        return data;
+
+
+    }
 
 }
