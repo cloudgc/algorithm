@@ -24,8 +24,8 @@ public class ChooseSort {
             int ele = data[len - 1];
 
             int tj = len - 1;
-            for (int j = len - 2; j >= i; j--) {
-            int t = data[j];
+            for (int j = tj - 1; j >= i; j--) {
+                int t = data[j];
                 if (t < ele) {
                     tj = j;
                     ele = t;
@@ -42,7 +42,7 @@ public class ChooseSort {
 
     public static void main(String[] args) {
 
-        int [] data=new int[]{1,5,7,4,2,3};
+        int[] data = new int[]{1, 5, 7, 4, 0,2};
         int[] ints = chooseSort(data);
         System.out.println(Arrays.toString(ints));
 
