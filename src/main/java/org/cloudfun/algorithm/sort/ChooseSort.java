@@ -7,6 +7,9 @@ import java.util.Arrays;
  *
  * @author cloudgc
  * @since 0.0.1
+ * <p>
+ * 选择排序，分为已排序空间，和未排序空间，在未排序区查找最小元素放入排序空间尾部
+ * </p>
  */
 public class ChooseSort {
 
@@ -42,7 +45,7 @@ public class ChooseSort {
 
     public static void main(String[] args) {
 
-        int[] data = new int[]{1, 5, 7, 4, 0,2};
+        int[] data = new int[]{1, 5, 7, 4, 0, 2};
         int[] ints = chooseSort(data);
         System.out.println(Arrays.toString(ints));
 

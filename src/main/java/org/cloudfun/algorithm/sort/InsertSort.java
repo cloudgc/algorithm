@@ -7,6 +7,9 @@ import java.util.Arrays;
  *
  * @author cloudgc
  * @since 0.0.1
+ * <p>
+ * 选择一个左边元素，遍历右边所有元素 和左边元素比较 如果小于 就插入到对应的位置并且移动右边所有元素
+ * </p>
  */
 public class InsertSort {
 
@@ -29,7 +32,7 @@ public class InsertSort {
                     }
 
                 }
-                System.out.println("j:"+j);
+                System.out.println("j:" + j);
                 data[j + 1] = e;
 
             }
@@ -39,7 +42,7 @@ public class InsertSort {
 
         public static void main(String[] args) {
 
-            int[] data = new int[]{1,3,4,2};
+            int[] data = new int[]{1, 3, 4, 2, 0};
             int[] sort = NormalInsertSort.sort(data);
             System.out.println(Arrays.toString(sort));
         }
