@@ -23,21 +23,21 @@ public class CombineLinkList {
 
     private static ListNode combineLinkList(ListNode linkNode, ListNode linkNode1) {
 
-        if(linkNode==null){
+        if (linkNode == null) {
             return linkNode1;
         }
-        if(linkNode1==null){
+        if (linkNode1 == null) {
             return linkNode;
         }
 
         ListNode head;
 
-        if(linkNode.val<=linkNode1.val){
-            head=linkNode;
-            head.next=combineLinkList(linkNode.next,linkNode1);
-        }else{
-            head=linkNode1;
-            head.next=combineLinkList(linkNode,linkNode1.next);
+        if (linkNode.val <= linkNode1.val) {
+            head = linkNode;
+            head.next = combineLinkList(linkNode.next, linkNode1);
+        } else {
+            head = linkNode1;
+            head.next = combineLinkList(linkNode, linkNode1.next);
         }
 
 

@@ -8,7 +8,7 @@ import java.util.List;
  * @apiNote
  * @date 2019/11/21
  * <p>
- *     模板方法 把算法步骤抽象 不同的方式对应不同的实现
+ * 模板方法 把算法步骤抽象 不同的方式对应不同的实现
  * </p>
  */
 public class TemplatePattern {

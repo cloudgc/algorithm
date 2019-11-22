@@ -1,7 +1,5 @@
 package org.cloudfun.design.pattern.create;
 
-import org.junit.Before;
-
 /**
  * Copyright @ 2019/6/2
  *

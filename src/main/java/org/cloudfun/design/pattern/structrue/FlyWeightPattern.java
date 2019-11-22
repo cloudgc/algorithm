@@ -9,10 +9,9 @@ import java.util.Map;
  * @author cloudgc
  * @since 0.0.1
  * 享元模式
- *  1.大量小颗粒度的对象创建
- *  2. 内部状态  不变 可以缓存起来
- *  3. 外部状态  容易变化 使用统一入口接口
- *
+ * 1.大量小颗粒度的对象创建
+ * 2. 内部状态  不变 可以缓存起来
+ * 3. 外部状态  容易变化 使用统一入口接口
  */
 public class FlyWeightPattern {
 

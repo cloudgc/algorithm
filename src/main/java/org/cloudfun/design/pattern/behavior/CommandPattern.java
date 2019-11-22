@@ -88,19 +88,14 @@ public class CommandPattern {
     }
 
     public static void main(String[] args) {
-        LightOnReceiver receiver =new LightOnReceiver("front");
+        LightOnReceiver receiver = new LightOnReceiver("front");
 
-        LightOffReceiver lightOffReceiver =new LightOffReceiver("rear");
+        LightOffReceiver lightOffReceiver = new LightOffReceiver("rear");
 
         LightOnCommand command = new LightOnCommand(receiver);
         Invoke invoke = new Invoke();
         invoke.setCommand(command);
         invoke.doAction();
-
-
-
-
-
 
 
     }

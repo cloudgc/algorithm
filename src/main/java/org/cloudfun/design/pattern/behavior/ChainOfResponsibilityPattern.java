@@ -24,7 +24,7 @@ public class ChainOfResponsibilityPattern {
         }
 
         public void payCost(int cost, String message) {
-            if (this.accidentCost >=  cost) {
+            if (this.accidentCost >= cost) {
                 payMoney(message);
             } else {
                 if (this.nextAccidentDeal != null) {
@@ -93,11 +93,11 @@ public class ChainOfResponsibilityPattern {
     public static void main(String[] args) {
 
         AbstractAccidentDeal dealChain = getDealChain();
-        dealChain.payCost(100,"head scratch");
+        dealChain.payCost(100, "head scratch");
 
-        dealChain.payCost(512,"wheel lost");
+        dealChain.payCost(512, "wheel lost");
 
-        dealChain.payCost(30100,"engine damage");
+        dealChain.payCost(30100, "engine damage");
 
 
     }

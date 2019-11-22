@@ -70,7 +70,7 @@ public class IteratorPattern {
         NameIteratorRepository repository = new NameIteratorRepository();
 
 
-        for (Iterator iterator = repository.getIterator(); iterator.hasNext();) {
+        for (Iterator iterator = repository.getIterator(); iterator.hasNext(); ) {
             System.out.println(iterator.getNext());
         }
 
