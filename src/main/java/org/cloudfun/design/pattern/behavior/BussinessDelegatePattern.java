@@ -1,7 +1,7 @@
 package org.cloudfun.design.pattern.behavior;
 
 /**
- * @author 88447351
+ * @author cloudgc
  * @apiNote
  * @date 2019/11/24
  */
