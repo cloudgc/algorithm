@@ -9,4 +9,14 @@ package org.cloudfun.algorithm.sort;
  * </p>
  */
 public class MergeSort {
+
+    public int[] mergeSort(int[] array){
+        return null;
+    }
+
+
+    public static void main(String[] args) {
+
+
+    }
 }
