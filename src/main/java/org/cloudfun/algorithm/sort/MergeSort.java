@@ -61,11 +61,38 @@ public class MergeSort {
     }
 
 
+    public int[] mergeSort(int[] array, int start, int end) {
+
+        if (end - start == 1) {
+            return null;
+        }
+
+        int i = (end - start) / 2;
+
+        int[] leftDataMerge = mergeSort(array, start, start + i);
+        int[] rightDataMerge = mergeSort(array, start + i, end);
+
+        if (leftDataMerge == null) {
+            leftDataMerge = Arrays.copyOfRange(array, start, start + i);
+        }
+        if (rightDataMerge == null) {
+            rightDataMerge = Arrays.copyOfRange(array, start + i, end);
+
+        }
+
+        return mergeData(leftDataMerge, rightDataMerge);
+    }
+
     public static void main(String[] args) {
-        int[] data = {1, 8, 10, 60, 5, 6, 7, 4, 3, 9, 0};
         MergeSort mergeSort = new MergeSort();
+        int[] data = {1, 8, 10, 60, 5, 6, 7, 4, 3, 9, 0};
         int[] ints = mergeSort.mergeSort(data);
         System.out.println(Arrays.toString(ints));
+
+        int[] dataBc = {1, 8, 10, 60, 5, 6, 7, 4, 3, 9, 0};
+        int[] ints1 = mergeSort.mergeSort(dataBc, 0, dataBc.length);
+
+        System.out.println(Arrays.toString(ints1));
     }
 
 }
