@@ -90,9 +90,9 @@ public class QuickSort {
 
         QuickSort quickSort = new QuickSort();
 
-        // int[] ints = quickSort.quickSort(data, 0, data.length);
-        //
-        // System.out.println(Arrays.toString(ints));
+        int[] ints = quickSort.quickSort(data, 0, data.length);
+
+        System.out.println(Arrays.toString(ints));
 
         int[] dataOther = {1, 8, 10, 60, 5, 6, 7, 4, 3, 9, 0};
 
