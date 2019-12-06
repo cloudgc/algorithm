@@ -9,6 +9,9 @@ import java.util.Arrays;
  * @since 0.0.1
  * <p>
  * 选择排序，分为已排序空间，和未排序空间，在未排序区查找最小元素放入排序空间尾部
+ * 原地排序
+ * 不稳定排序
+ * 时间复杂 最好O(n^2) 最坏O(N^2) 平均 O(n^2)
  * </p>
  */
 public class ChooseSort {
