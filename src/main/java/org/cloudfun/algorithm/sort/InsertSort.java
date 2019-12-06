@@ -9,6 +9,9 @@ import java.util.Arrays;
  * @since 0.0.1
  * <p>
  * 选择一个左边元素，遍历右边所有元素 和左边元素比较 如果小于 就插入到对应的位置并且移动右边所有元素
+ * 原地排序
+ * 稳定排序
+ * 时间复杂 最好O(n) 最坏O(N^2) 平均 O(n^2)
  * </p>
  */
 public class InsertSort {
