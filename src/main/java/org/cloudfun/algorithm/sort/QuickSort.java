@@ -47,6 +47,42 @@ public class QuickSort {
         return array;
     }
 
+    /**
+     * use insert sort in pivot zone
+     *
+     * @param array data
+     * @param start start index
+     * @param end   end index
+     * @return final sort data
+     */
+
+    public int[] quickSortRightPivot(int[] array, int start, int end) {
+
+        if (end - start <= 0) {
+            return null;
+        }
+
+        int pivot = array[end - 1];
+
+        int j = start;
+        for (int i = start; i < end - 1; i++) {
+            int compareData = array[i];
+            if (compareData <= pivot) {
+                int tmp = array[i];
+                array[i] = array[j];
+                array[j] = tmp;
+                j++;
+            }
+        }
+
+        array[end - 1] = array[j];
+        array[j] = pivot;
+
+        quickSort(array, start, end);
+        quickSort(array, end + 1, end);
+
+        return array;
+    }
 
 
     public static void main(String[] args) {
@@ -54,9 +90,15 @@ public class QuickSort {
 
         QuickSort quickSort = new QuickSort();
 
-        int[] ints = quickSort.quickSort(data, 0, data.length);
+        // int[] ints = quickSort.quickSort(data, 0, data.length);
+        //
+        // System.out.println(Arrays.toString(ints));
 
-        System.out.println(Arrays.toString(ints));
+        int[] dataOther = {1, 8, 10, 60, 5, 6, 7, 4, 3, 9, 0};
+
+        int[] ints1 = quickSort.quickSortRightPivot(dataOther, 0, data.length);
+
+        System.out.println(Arrays.toString(ints1));
     }
 
 
