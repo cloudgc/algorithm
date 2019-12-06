@@ -8,6 +8,9 @@ import java.util.Arrays;
  * @date 2019/11/28
  * <p>
  * 归并排序
+ * 不是原地排序
+ * 稳定排序
+ * 时间复杂 最好O(nlogn) 最坏O(nlogn) 平均O(nlogn)
  * </p>
  */
 public class MergeSort {
