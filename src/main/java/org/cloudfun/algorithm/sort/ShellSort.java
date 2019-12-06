@@ -7,10 +7,15 @@ import java.util.Arrays;
  * @apiNote
  * @date 2019/11/27
  * <blockquote><pre>
- *      最小增量插入
+ *      最小增量插入 DiminishingIncrementSort
  * </pre></blockquote>
+ * <P>
+ * 原地排序
+ * 不稳定排序
+ * 时间复杂 最好O(n*log2n) 最坏O(N^2) 平均 O(n^3/2)
+ * </P>
  */
-public class DiminishingIncrementSort {
+public class ShellSort {
 
 
     static void ShellPass(int[] array) {
