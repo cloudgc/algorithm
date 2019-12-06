@@ -7,6 +7,11 @@ import java.util.Arrays;
  *
  * @author cloudgc
  * @since 0.0.1
+ * <p>
+ * 原地排序
+ * 稳定排序
+ * 时间复杂 最好O(n) 最坏O(N^2) 平均 O(n^2)
+ * </p>
  */
 public class BubbleSort {
 
