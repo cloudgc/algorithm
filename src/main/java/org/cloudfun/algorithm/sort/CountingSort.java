@@ -21,15 +21,14 @@ public class CountingSort {
 
         int[] container = new int[maxNum];
 
+        // put ele num
         for (int ele : array) {
-            int eleCollector = container[ele];
-            container[ele] = ++eleCollector;
+            container[ele]++;
         }
 
-        int counting = 0;
-        for (int i = 0; i < container.length; i++) {
-            counting += container[i];
-            container[i] = counting;
+        // counting before ele position
+        for (int i = 1; i < container.length; i++) {
+            container[i] = container[i] + container[i - 1];
         }
 
         int[] data = new int[array.length];
