@@ -34,9 +34,8 @@ public class CountingSort {
         int[] data = new int[array.length];
 
         for (int ele : array) {
-            int sortNum = container[ele];
-            data[sortNum - 1] = ele;
-            container[ele] = --sortNum;
+            data[container[ele] - 1] = ele;
+            container[ele]--;
         }
 
         return data;
