@@ -13,6 +13,15 @@ public class BinarySearch {
 
     int findTime = 0;
 
+    /**
+     * 正常查询
+     *
+     * @param array array
+     * @param ele   find ele
+     * @param start index start
+     * @param end   index end
+     * @return element index position
+     */
     public int binarySearch(int[] array, int ele, int start, int end) {
 
         if ((end - start) < 0) {
@@ -46,6 +55,40 @@ public class BinarySearch {
         int i = search.binarySearch(sortData, 1334, 0, data.length - 1);
         System.out.println("index:" + i);
         System.out.println("useTime:" + search.findTime);
+
+        int[] dataa = {2, 5, 6, 7, 7, 7, 10, 78};
+        int i1 = search.binarySearchFirstEle(dataa, 7);
+        System.out.println("findFirst:" + i1);
+
+
+    }
+
+
+    /**
+     * 查找数组中第一个 元素
+     */
+    public int binarySearchFirstEle(int[] array, int ele) {
+
+        int start = 0;
+        int end = array.length - 1;
+
+        while ((end - start) >= 0) {
+
+            int mid = start + (end - start) >> 1;
+            if (array[mid] < ele) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+
+        }
+
+        // 找到index 在比较
+        if (start < array.length && array[start] == ele) {
+            return start;
+        }
+
+        return -1;
     }
 
 
