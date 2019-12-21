@@ -62,6 +62,13 @@ public class BinarySearch {
 
         int i2 = search.binarySearchLastEle(dataa, 7);
         System.out.println("findLast:" + i2);
+
+        int i3 = search.binarySearchFirstBigger(dataa, 10);
+        System.out.println("findBigger:" + i3);
+
+        int i4 = search.binarySearchLastSmailer(dataa, 7);
+        System.out.println("findSmailer:" + i4);
+
     }
 
 
@@ -93,7 +100,6 @@ public class BinarySearch {
     }
 
 
-
     /**
      * 查找数组中最后 元素
      */
@@ -114,10 +120,62 @@ public class BinarySearch {
         }
 
         // 找到index 在比较
-        if (start < array.length && array[end] == ele) {
+        if ((start - 1) < array.length && array[start - 1] == ele) {
+            return start - 1;
+        }
+
+        return -1;
+    }
+
+
+    public int binarySearchFirstBigger(int[] array, int ele) {
+
+        int start = 0;
+        int end = array.length - 1;
+
+        while ((end - start) >= 0) {
+
+            int mid = start + ((end - start) >> 1);
+            if (array[mid] <= ele) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+
+        }
+
+        // 找到index 在比较
+        if (start < array.length && array[start] > ele) {
             return start;
         }
 
         return -1;
     }
+
+
+    public int binarySearchLastSmailer(int[] array, int ele) {
+
+        int start = 0;
+        int end = array.length - 1;
+
+        while ((end - start) >= 0) {
+
+            int mid = start + ((end - start) >> 1);
+            if (array[mid] < ele) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+
+        }
+
+        // 找到index 在比较
+        if ((start - 1) >= 0 && array[start - 1] < ele) {
+            return start - 1;
+        }
+
+        return -1;
+    }
+
+
 }
