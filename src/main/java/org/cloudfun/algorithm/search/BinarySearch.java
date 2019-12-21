@@ -60,7 +60,8 @@ public class BinarySearch {
         int i1 = search.binarySearchFirstEle(dataa, 7);
         System.out.println("findFirst:" + i1);
 
-
+        int i2 = search.binarySearchLastEle(dataa, 7);
+        System.out.println("findLast:" + i2);
     }
 
 
@@ -74,7 +75,7 @@ public class BinarySearch {
 
         while ((end - start) >= 0) {
 
-            int mid = start + (end - start) >> 1;
+            int mid = start + ((end - start) >> 1);
             if (array[mid] < ele) {
                 start = mid + 1;
             } else {
@@ -92,4 +93,31 @@ public class BinarySearch {
     }
 
 
+
+    /**
+     * 查找数组中最后 元素
+     */
+    public int binarySearchLastEle(int[] array, int ele) {
+
+        int start = 0;
+        int end = array.length - 1;
+
+        while ((end - start) >= 0) {
+
+            int mid = start + ((end - start) >> 1);
+            if (array[mid] <= ele) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+
+        }
+
+        // 找到index 在比较
+        if (start < array.length && array[end] == ele) {
+            return start;
+        }
+
+        return -1;
+    }
 }
