@@ -7,6 +7,13 @@ package org.cloudfun.algorithm.binarytree;
  */
 public class TreeNode {
 
+    public TreeNode() {
+    }
+
+    public TreeNode(int element) {
+        this.element = element;
+    }
+
     private int element;
 
     private TreeNode leftLeaf;
