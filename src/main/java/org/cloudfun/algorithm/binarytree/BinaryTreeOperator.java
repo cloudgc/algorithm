@@ -12,5 +12,8 @@ public class BinaryTreeOperator {
         return null;
     }
 
+    public TreeNode insertTreeNode(int data){
+        return null;
+    }
 
 }
