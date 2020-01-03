@@ -16,4 +16,9 @@ public class BinaryTreeOperator {
         return null;
     }
 
+    public TreeNode removeTreeNode(int data){
+        return null;
+    }
+
+
 }
