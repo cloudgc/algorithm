@@ -69,7 +69,7 @@ public class BinaryTree {
      *
      * @param treeNode data
      */
-    private static void printPostOrderTree(TreeNode treeNode) {
+    public static void printPostOrderTree(TreeNode treeNode) {
         if (treeNode == null) {
             return;
         }
@@ -87,7 +87,7 @@ public class BinaryTree {
      *
      * @param treeNode data
      */
-    private static void printInOrderTree(TreeNode treeNode) {
+    public static void printInOrderTree(TreeNode treeNode) {
         if (treeNode == null) {
             return;
         }
@@ -104,7 +104,7 @@ public class BinaryTree {
      *
      * @param treeNode data
      */
-    private static void printPreOrderTree(TreeNode treeNode) {
+    public static void printPreOrderTree(TreeNode treeNode) {
 
         if (treeNode == null) {
             return;

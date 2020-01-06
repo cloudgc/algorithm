@@ -43,4 +43,13 @@ public class TreeNode {
     public void setRightLeaf(TreeNode rightLeaf) {
         this.rightLeaf = rightLeaf;
     }
+
+    @Override
+    public String toString() {
+        return "TreeNode{" +
+                "element=" + element +
+                ", leftLeaf=" + leftLeaf +
+                ", rightLeaf=" + rightLeaf +
+                '}';
+    }
 }
