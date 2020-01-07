@@ -21,9 +21,15 @@ public class BinaryTreeOperator {
 
         //插入节点
         TreeNode insertTreeNode = insertTreeNode(treeNode, 15);
+
+        insertTreeNode(insertTreeNode, 20);
+        insertTreeNode(insertTreeNode, 22);
         BinaryTree.printInOrderTree(insertTreeNode);
         System.out.println();
 
+        TreeNode removeTreeNode = removeTreeNode(treeNode, 14);
+        BinaryTree.printInOrderTree(removeTreeNode);
+        System.out.println();
 
     }
 
@@ -74,8 +80,63 @@ public class BinaryTreeOperator {
         return treeNode;
     }
 
-    public static TreeNode removeTreeNode(int data) {
-        return null;
+    public static TreeNode removeTreeNode(TreeNode treeNode, int data) {
+        TreeNode node = treeNode;
+
+        //get data parent node
+        TreeNode nodeParent = null;
+
+        while (node != null && node.getElement() != data) {
+            nodeParent = node;
+            if (node.getElement() > data) {
+                node = node.getLeftLeaf();
+            } else {
+                node = node.getRightLeaf();
+            }
+        }
+
+        // if not found note return
+        if (node == null) {
+            return treeNode;
+        }
+
+        // node has full leaf node
+        if (node.getRightLeaf() != null && node.getLeftLeaf() != null) {
+            TreeNode minNodeParent = node;
+            TreeNode minNode = node.getRightLeaf();
+            while (minNode.getLeftLeaf() != null) {
+                minNodeParent = minNode;
+                minNode = minNode.getLeftLeaf();
+            }
+            node.setElement(minNode.getElement());
+            // minNode.setElement(0);
+            // minNodeParent.setLeftLeaf(null);
+            node = minNode;
+            nodeParent = minNodeParent;
+
+
+        }
+
+
+        TreeNode child;
+        if (node.getLeftLeaf() != null) {
+            child = node.getLeftLeaf();
+        } else if (node.getRightLeaf() != null) {
+            child = node.getRightLeaf();
+        } else {
+            child = null;
+        }
+
+        if (nodeParent == null) {
+            treeNode = child;
+        } else if (nodeParent.getLeftLeaf() == node) {
+            nodeParent.setLeftLeaf(child);
+        } else {
+            nodeParent.setRightLeaf(child);
+        }
+
+
+        return treeNode;
     }
 
 
