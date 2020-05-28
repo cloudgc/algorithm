@@ -2,10 +2,13 @@ package org.cloudfun.algorithm.binarytree;
 
 import java.util.Arrays;
 
-import static org.cloudfun.algorithm.binarytree.BinaryTree.*;
-
 /**
  * @author cloudgc
+ *
+ * <p>
+ *     i 的 第一个子节点： (i + 1) * 2 - 1
+ *     i 的 父节点  (i - 1) / 2
+ * </p>
  */
 public class Heap {
 
@@ -29,10 +32,22 @@ public class Heap {
     }
 
     public Heap(int capacity) {
-        innerArray = new int[capacity];
-        maxLength = capacity;
-        count = -1;
+        extendArray(new int[capacity], capacity, -1);
     }
+
+    public Heap() {
+    }
+
+    public Heap(int[] array) {
+        extendArray(array, array.length, maxLength - 1);
+    }
+
+    private void extendArray(int[] array, int length, int i) {
+        innerArray = array;
+        maxLength = length;
+        count = i;
+    }
+
 
     /**
      * @param ele add element
@@ -112,8 +127,10 @@ public class Heap {
     }
 
 
-    public Heap buildHeap(int[] array) {
+    public Heap buildHeap() {
+        for (int i = count; i > (count - 1) / 2; --i) {
 
+        }
 
         return this;
     }
