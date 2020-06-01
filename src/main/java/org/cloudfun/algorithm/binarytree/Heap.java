@@ -1,13 +1,14 @@
 package org.cloudfun.algorithm.binarytree;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * @author cloudgc
  *
  * <p>
- *     i 的 第一个子节点： (i + 1) * 2 - 1
- *     i 的 父节点  (i - 1) / 2
+ * i 的 第一个子节点： (i + 1) * 2 - 1
+ * i 的 父节点  (i - 1) / 2
  * </p>
  */
 public class Heap {
@@ -39,7 +40,7 @@ public class Heap {
     }
 
     public Heap(int[] array) {
-        extendArray(array, array.length, maxLength - 1);
+        extendArray(array, array.length, array.length - 1);
     }
 
     private void extendArray(int[] array, int length, int i) {
@@ -106,7 +107,8 @@ public class Heap {
             if ((i + 1) * 2 - 1 <= count && innerArray[i] < innerArray[(i + 1) * 2 - 1]) {
                 maxPos = (i + 1) * 2 - 1;
             }
-            if ((i + 1) * 2 < count && innerArray[i] < innerArray[(i + 1) * 2]) {
+
+            if ((i + 1) * 2 <= count && innerArray[maxPos] < innerArray[(i + 1) * 2]) {
                 maxPos = (i + 1) * 2;
             }
             if (maxPos == i) {
@@ -115,6 +117,7 @@ public class Heap {
             }
 
             swap(innerArray, i, maxPos);
+
             i = maxPos;
 
         }
@@ -128,28 +131,38 @@ public class Heap {
 
 
     public Heap buildHeap() {
-        for (int i = count; i > (count - 1) / 2; --i) {
-
+        for (int i = (count + 1) / 2 - 1; i >= 0; --i) {
+            heapify(innerArray, count, i);
         }
 
         return this;
     }
 
     public void sort() {
-
+        int k = 0;
+        while (k <= count) {
+            swap(innerArray, 0, count - k);
+            ++k;
+            heapify(innerArray, count - k, 0);
+        }
     }
 
 
     public static void main(String[] args) {
-        Heap heap = new Heap(5);
+        Heap heap = new Heap(100);
 
-        for (int i = 1; i < 6; i++) {
-            heap.addElement(i);
+        Random random = new Random();
+
+        for (int i = 1; i < 100; i++) {
+            heap.addElement(random.nextInt(100) + 1);
         }
+        // Heap heap = new Heap(10);
+        // int[] ints = {96, 68, 93, 44, 34, 61, 83, 15, 12, 21};
+        // for (int i : ints) {
+        //     heap.addElement(i);
+        // }
 
         heap.print();
-
-
         heap.removeMaxElement();
 
         heap.print();
@@ -158,6 +171,9 @@ public class Heap {
 
         heap.print();
 
+        heap.buildHeap();
+        heap.sort();
+        heap.print();
 
     }
 
