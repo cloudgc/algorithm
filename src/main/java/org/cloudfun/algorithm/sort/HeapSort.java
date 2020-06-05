@@ -2,6 +2,14 @@ package org.cloudfun.algorithm.sort;
 
 /**
  * 堆排序
+ * <p>
+ * 堆的应用一：优先级队列
+ * 1. 合并有序小文件
+ * 2. 高性能定时器
+ *
+ * 堆的应用二：利用堆求 Top K
+ * 堆的应用二：利用堆求 中位数
+ * </p>
  */
 public class HeapSort {
 
