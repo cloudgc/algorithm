@@ -12,46 +12,48 @@ import java.util.Map;
  * </pre></blockquote>
  */
 public class ServiceLocatorPattern {
-
+    
     interface Service {
+        
         //服务名称
         String getName();
-
+        
         //服务能够被调用
         void execute();
     }
-
+    
     static class JNDIService implements Service {
-
+        
         @Override
         public String getName() {
             return "jndi";
         }
-
+        
         @Override
         public void execute() {
             System.out.println("访问当前的JNDIg服务！");
-
+            
         }
-
+        
     }
-
+    
     class DataSourceService implements Service {
-
+        
         @Override
         public String getName() {
             return "dataSource";
         }
-
+        
         @Override
         public void execute() {
             System.out.println("获取数据链接资源！");
-
+            
         }
-
+        
     }
-
+    
     static class InitContext {
+        
         public Service lookUp(String name) {
             Service service = null;
             switch (name) {
@@ -64,32 +66,35 @@ public class ServiceLocatorPattern {
             return service;
         }
     }
-
+    
     static class Cache {
+        
         private Map<String, Service> cache = new HashMap<String, Service>();
-
+        
         //获得缓存中的内容
         public Service getCache(String name) {
             Service service = cache.get(name);
             return service;
         }
-
+        
         //添加缓存
         public void addCache(String name, Service service) {
             cache.put(name, service);
         }
-
+        
     }
-
+    
     static class ServiceLocator {
+        
         private Cache cache;
+        
         private InitContext initContext;
-
+        
         public ServiceLocator() {
             initContext = new InitContext();
             cache = new Cache();
         }
-
+        
         //获得服务
         public Service getService(String name) {
             Service service = cache.getCache(name);
@@ -102,10 +107,10 @@ public class ServiceLocatorPattern {
             System.out.println("已经获取到了jndi资源！");
             return service;
         }
-
-
+        
+        
     }
-
+    
     public static void main(String[] args) {
         ServiceLocator locator = new ServiceLocator();
         Service service = locator.getService("jndi");
@@ -113,6 +118,6 @@ public class ServiceLocatorPattern {
         service = locator.getService("jndi");
         service.execute();
     }
-
-
+    
+    
 }

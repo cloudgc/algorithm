@@ -15,29 +15,29 @@ import java.lang.reflect.Proxy;
  * @since 0.0.1
  */
 public class ProxyPattern {
-
+    
     interface Car {
-
+        
         void driver();
-
+        
     }
-
+    
     public static class RealCar implements Car {
-
+        
         @Override
         public void driver() {
             System.out.println("Real Car driving faster");
         }
     }
-
+    
     static class JdkInvocationHandler implements InvocationHandler {
-
+        
         private Car carObj;
-
+        
         public JdkInvocationHandler(Car car) {
             this.carObj = car;
         }
-
+        
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             System.out.println("jdk proxy car");
@@ -48,52 +48,51 @@ public class ProxyPattern {
             return null;
         }
     }
-
+    
     static class CglibProxy implements MethodInterceptor {
-
+        
         private Object car;
-
+        
         public CglibProxy(Object car) {
             this.car = car;
         }
-
+        
         @Override
         public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
             System.out.println("cglib proxy");
             System.out.println("do some checking");
             return method.invoke(car, args);
         }
-
+        
         static Object getProxy(Object car) {
             Enhancer enhancer = new Enhancer();
             enhancer.setSuperclass(car.getClass());
             enhancer.setCallback(new CglibProxy(car));
             return enhancer.create();
         }
-
-
+        
+        
     }
-
-
+    
+    
     public static void main(String[] args) {
-
+        
         Car car = new RealCar();
-
-        JdkInvocationHandler jdkInvocationHandler
-                = new JdkInvocationHandler(car);
-
-        Car o = (Car) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(),
-                new Class[]{Car.class}, jdkInvocationHandler);
-
+        
+        JdkInvocationHandler jdkInvocationHandler = new JdkInvocationHandler(car);
+        
+        Car o = (Car) Proxy
+                .newProxyInstance(ClassLoader.getSystemClassLoader(), new Class[] {Car.class}, jdkInvocationHandler);
+        
         o.driver();
         System.out.println("=============================");
-
+        
         Car proxy = (Car) CglibProxy.getProxy(car);
-
+        
         proxy.driver();
-
-
+        
+        
     }
-
-
+    
+    
 }

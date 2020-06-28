@@ -12,69 +12,69 @@ import java.util.List;
  * </p>
  */
 public class TemplatePattern {
-
+    
     interface OperatorCar {
-
+        
         void engineStart();
-
+        
         void engineStop();
     }
-
+    
     static class CarContext {
-
+        
         static List<OperatorCar> operatorCars = new ArrayList<>();
-
-
+        
+        
         static void registerOperator(OperatorCar operatorCar) {
             operatorCars.add(operatorCar);
         }
-
+        
         static void startEngine() {
             operatorCars.stream().forEach(OperatorCar::engineStart);
         }
-
+        
         static void stopEngine() {
             operatorCars.stream().forEach(OperatorCar::engineStop);
         }
-
+        
     }
-
+    
     static class LightOperator implements OperatorCar {
-
+        
         @Override
         public void engineStart() {
             System.out.println("open light");
         }
-
+        
         @Override
         public void engineStop() {
-
+            
             System.out.println("close light");
-
+            
         }
     }
-
+    
     static class WiperOperator implements OperatorCar {
-
+        
         @Override
         public void engineStart() {
             System.out.println("start wiper rain");
         }
-
+        
         @Override
         public void engineStop() {
             System.out.println("close wiper rain");
         }
     }
-
+    
     public static void main(String[] args) {
-
+        
         CarContext.registerOperator(new WiperOperator());
         CarContext.registerOperator(new LightOperator());
         CarContext.startEngine();
         CarContext.stopEngine();
-
+        
     }
-
-
+    
+    
 }
