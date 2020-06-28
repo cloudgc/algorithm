@@ -9,15 +9,13 @@ import java.util.Arrays;
  * <blockquote><pre>
  *      最小增量插入 DiminishingIncrementSort
  * </pre></blockquote>
- * <P>
- * 原地排序
- * 不稳定排序
- * 时间复杂 最好O(n*log2n) 最坏O(N^2) 平均 O(n^3/2)
+ * <p>
+ * 原地排序 不稳定排序 时间复杂 最好O(n*log2n) 最坏O(N^2) 平均 O(n^3/2)
  * </P>
  */
 public class ShellSort {
-
-
+    
+    
     static void ShellPass(int[] array) {
         int gap = array.length;
         do {
@@ -37,15 +35,15 @@ public class ShellSort {
             }
         } while (gap != 1);
     }
-
-
+    
+    
     public static void main(String[] args) {
-
-        int[] data = new int[]{1, 3, 4, 2, 0};
+        
+        int[] data = new int[] {1, 3, 4, 2, 0};
         ShellPass(data);
         System.out.println(Arrays.toString(data));
-
-
+        
+        
     }
-
+    
 }

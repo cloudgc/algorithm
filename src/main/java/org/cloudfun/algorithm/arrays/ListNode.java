@@ -8,16 +8,16 @@ package org.cloudfun.algorithm.arrays;
  */
 
 public class ListNode {
-
+    
     int val;
-
+    
     ListNode next;
-
+    
     ListNode pev;
-
+    
     ListNode(int x) {
         val = x;
     }
-
-
+    
+    
 }

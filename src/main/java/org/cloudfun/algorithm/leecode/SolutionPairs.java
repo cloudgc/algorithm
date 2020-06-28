@@ -10,10 +10,10 @@ import org.slf4j.LoggerFactory;
  * @since 0.0.1
  */
 public class SolutionPairs {
-
+    
     private final static Logger log = LoggerFactory.getLogger(SolutionPairs.class);
-
-
+    
+    
     public static ListNode getData() {
         ListNode listNode = new ListNode(1);
         ListNode tmp = listNode;
@@ -23,68 +23,67 @@ public class SolutionPairs {
         }
         return listNode;
     }
-
+    
     public static void printLinkNode(ListNode listNode) {
-
-
+        
         if (listNode == null) {
-
+            
             log.info("[{}]", ">");
-
-
+            
+            
         }
         StringBuilder stringBuilder = new StringBuilder();
-
+        
         getStrListNode(listNode, stringBuilder);
-
+        
         log.info("list:[{}]", stringBuilder.toString());
-
-
+        
+        
     }
-
-
+    
+    
     private static void getStrListNode(ListNode listNode, StringBuilder stringBuilder) {
-
+        
         stringBuilder.append(">" + listNode.val);
-
+        
         if (listNode.next != null) {
             getStrListNode(listNode.next, stringBuilder);
         }
     }
-
-
+    
+    
     public static void main(String[] args) {
         ListNode data = getData();
-
+        
         printLinkNode(data);
         ListNode pairs = reversePairs(data);
-
+        
         printLinkNode(pairs);
-
+        
     }
-
+    
     private static ListNode reversePairs(ListNode data) {
-
+        
         //create root for start
         ListNode preRoot = new ListNode(-1);
-
+        
         //connection
         preRoot.next = data;
-
+        
         ListNode tmpRoot = preRoot;
-
+        
         ListNode pairPre = data;
         ListNode pairNext = data.next;
-
+        
         while (pairNext != null) {
             pairPre.next = pairNext.next;
-
+            
             pairNext.next = pairPre;
-
+            
             preRoot.next = pairNext;
-
+            
             preRoot = pairPre;
-
+            
             if (pairPre.next != null) {
                 pairNext = preRoot.next.next;
             } else {
@@ -92,16 +91,17 @@ public class SolutionPairs {
             }
             pairPre = pairPre.next;
         }
-
-
+        
         return tmpRoot.next;
     }
-
-
+    
+    
     static class ListNode {
+        
         int val;
+        
         ListNode next;
-
+        
         ListNode(int x) {
             val = x;
         }

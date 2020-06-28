@@ -20,8 +20,8 @@ package org.cloudfun.design.pattern.behavior;
  * </pre></blockquote>
  */
 public class StatePattern {
-
-
+    
+    
     enum Operator {
         /**
          * accelerator car
@@ -32,52 +32,54 @@ public class StatePattern {
          */
         BRAKE
     }
-
+    
     static class CarContext {
+        
         int speed;
-
+        
         Operator operator;
-
+        
         State state = new GreenState();
-
+        
         public void setState(State state) {
             this.state = state;
         }
-
+        
         public Operator getOperator() {
             return operator;
         }
-
+        
         public void setOperator(Operator operator) {
             this.operator = operator;
         }
-
+        
         public int getSpeed() {
             return speed;
         }
-
+        
         public void setSpeed(int speed) {
             this.speed = speed;
         }
-
-
+        
+        
         void display(String color) {
             System.out.println("light:" + color + " on");
         }
-
+        
         void request() {
             state.handler(this);
         }
-
+        
     }
-
-
+    
+    
     static abstract class State {
+        
         abstract void handler(CarContext context);
     }
-
+    
     static class GreenState extends State {
-
+        
         @Override
         void handler(CarContext context) {
             if (context.getSpeed() <= 80) {
@@ -88,9 +90,9 @@ public class StatePattern {
             }
         }
     }
-
+    
     static class YellowSate extends State {
-
+        
         @Override
         void handler(CarContext context) {
             if (context.getSpeed() > 80 && context.getSpeed() < 120) {
@@ -106,9 +108,9 @@ public class StatePattern {
             }
         }
     }
-
+    
     static class RedState extends State {
-
+        
         @Override
         void handler(CarContext context) {
             if (context.getSpeed() >= 120) {
@@ -119,10 +121,10 @@ public class StatePattern {
             }
         }
     }
-
-
+    
+    
     public static void main(String[] args) {
-
+        
         CarContext carContext = new CarContext();
         carContext.setOperator(Operator.ACCELERATOR);
         for (int i = 0; i < 150; i += 20) {
@@ -134,6 +136,6 @@ public class StatePattern {
             carContext.setSpeed(i);
             carContext.request();
         }
-
+        
     }
 }

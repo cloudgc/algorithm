@@ -11,23 +11,23 @@ import org.springframework.util.StringUtils;
  * </p>
  */
 public class MediatorPattern {
-
-
+    
+    
     interface CarMediator {
-
+        
         void transaction(Trader sell, Trader buyer);
-
-
+        
+        
     }
-
+    
     static class SomeBadCarMediator implements CarMediator {
-
+        
         private int dirtyMoney;
-
+        
         public int getDirtyMoney() {
             return dirtyMoney;
         }
-
+        
         @Override
         public void transaction(Trader sell, Trader buyer) {
             buyer.setMoney(buyer.getMoney() - 10000);
@@ -37,50 +37,51 @@ public class MediatorPattern {
             buyer.setCarName(sell.getCarName());
         }
     }
-
-
+    
+    
     static abstract class Trader {
-
+        
         private int money;
+        
         private String carName;
-
+        
         Trader(int money, String carName) {
             this.money = money;
             this.carName = carName;
         }
-
+        
         public int getMoney() {
             return money;
         }
-
+        
         public void setMoney(int money) {
             this.money = money;
         }
-
+        
         public String getCarName() {
             return carName;
         }
-
+        
         public void setCarName(String carName) {
             this.carName = carName;
         }
-
+        
         abstract void doTransaction();
-
+        
     }
-
+    
     static class TraderSeller extends Trader {
-
+        
         TraderSeller(int money, String carName) {
             super(money, carName);
         }
-
-
+        
+        
         TraderSeller() {
             super(0, null);
         }
-
-
+        
+        
         @Override
         void doTransaction() {
             if (getMoney() < 0) {
@@ -92,18 +93,18 @@ public class MediatorPattern {
             }
         }
     }
-
+    
     static class TraderBuyer extends Trader {
-
-
+        
+        
         public TraderBuyer(int money, String carName) {
             super(money, carName);
         }
-
+        
         public TraderBuyer(int money) {
             super(money, null);
         }
-
+        
         @Override
         void doTransaction() {
             if (StringUtils.isEmpty(getCarName())) {
@@ -115,27 +116,24 @@ public class MediatorPattern {
             }
         }
     }
-
-
+    
+    
     public static void main(String[] args) {
-
+        
         SomeBadCarMediator badCarMediator = new SomeBadCarMediator();
-
-
+        
         TraderBuyer buyer = new TraderBuyer(200000);
         TraderSeller seller = new TraderSeller();
-
-
+        
         badCarMediator.transaction(seller, buyer);
-
-
+        
         System.out.println("badMediator get:" + badCarMediator.getDirtyMoney());
-
+        
         System.out.println("buyer get car:" + buyer.getCarName());
-
+        
         System.out.println("seller get money:" + seller.getMoney());
-
-
+        
+        
     }
-
+    
 }
