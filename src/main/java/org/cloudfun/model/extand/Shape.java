@@ -1,6 +1,12 @@
-package org.cloudfun.model.extand;/**
-  * @author cloudgc
-  * @since 12/10/2021
+package org.cloudfun.model.extand;
+
+/**
+ * @author cloudgc
+ * @since 12/10/2021
  **/
-public class Shape {
+public abstract sealed class Shape permits Circle, MyCircle {
+    /**
+     *
+     */
+   abstract void area();
 }
